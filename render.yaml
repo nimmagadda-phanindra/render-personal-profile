@@ -3,11 +3,11 @@ services:
   - type: web
     name: personal-profile
     env: static
-    plan: free  # You can change this to a paid plan if needed
+    plan: free
     staticPublishPath: .  # Path to your HTML files
     buildCommand: ""
     startCommand: ""
     routes:
-      - type: web
-        source: /
-        destination: /
+      - type: rewrite
+        source: /*
+        destination: /index.html
