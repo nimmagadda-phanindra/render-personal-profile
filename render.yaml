@@ -1,1 +1,35 @@
-test
+# render.yaml
+services:
+  - type: web
+    name: my-web-service
+    env: docker
+    plan: starter  # Options: free, starter, standard, pro
+    region: oregon  # You can change this to your preferred region
+    dockerfilePath: ./Dockerfile
+    buildCommand: docker build -t my-web-service .
+    startCommand: docker run -p 8080:8080 my-web-service
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 8080
+    healthCheckPath: /
+    autoDeploy: true
+    routes:
+      - type: web
+        source: /
+        destination: /
+
+databases:
+  - name: my-database
+    engine: postgresql
+    version: 15
+    plan: starter
+    region: oregon
+    databaseName: my_app_db
+    user: admin
+    password: strongpassword
+    backupEnabled: true
+    replicas: 1
+    disk:
+      sizeGB: 10
