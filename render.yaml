@@ -1,35 +1,57 @@
-# render.yaml
-services:
-  - type: web
-    name: my-web-service
-    env: docker
-    plan: starter  # Options: free, starter, standard, pro
-    region: oregon  # You can change this to your preferred region
-    dockerfilePath: ./Dockerfile
-    buildCommand: docker build -t my-web-service .
-    startCommand: docker run -p 8080:8080 my-web-service
-    envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PORT
-        value: 8080
-    healthCheckPath: /
-    autoDeploy: true
-    routes:
-      - type: web
-        source: /
-        destination: /
+""<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile & CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        p {
+            color: #666;
+            line-height: 1.6;
+        }
+        .download-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Name</h1>
+        <h2>DevOps Engineer | MLOps | LLMOps | Cloud Architect</h2>
+        <p>
+            With over 13 years of experience in DevOps, I specialize in cloud computing platforms, MLOps, AWS, Linux, Python, Terraform, Ansible, Docker, Kubernetes, Helm, Version Control Tools, Configuration Management, CI/CD, Monitoring, Release Engineering, and Agile Methodologies.
+        </p>
 
-databases:
-  - name: my-database
-    engine: postgresql
-    version: 15
-    plan: starter
-    region: oregon
-    databaseName: my_app_db
-    user: admin
-    password: strongpassword
-    backupEnabled: true
-    replicas: 1
-    disk:
-      sizeGB: 10
+        <h2>Contact Information</h2>
+        <p>Email: your.email@example.com</p>
+        <p>Phone: +91 12345 67890</p>
+
+        <h2>Download My CV</h2>
+        <a href="CV.pdf" class="download-btn" download>Download CV</a>
+    </div>
+</body>
+</html>
+""
